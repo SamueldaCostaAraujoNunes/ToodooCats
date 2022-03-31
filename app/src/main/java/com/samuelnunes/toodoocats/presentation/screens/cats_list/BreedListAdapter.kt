@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.samuelnunes.toodoocats.databinding.ItemCatBinding
-import com.samuelnunes.toodoocats.entity.remote.BreedDTO
+import com.samuelnunes.toodoocats.domain.dto.BreedDTO
 import com.samuelnunes.toodoocats.presentation.extensions.visibilityIf
 
 internal class BreedListAdapter(private val onBreedDTOClick: (BreedDTO) -> Unit) :

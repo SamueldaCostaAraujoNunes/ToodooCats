@@ -1,4 +1,4 @@
-package com.samuelnunes.toodoocats.entity.remote
+package com.samuelnunes.toodoocats.domain.dto
 
 
 import com.google.gson.annotations.SerializedName

@@ -2,11 +2,11 @@ package com.samuelnunes.toodoocats.data.remote
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.samuelnunes.toodoocats.data.remote.api.TheCapApi
+import com.samuelnunes.toodoocats.data.remote.api.TheCatApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object TheCapApiManager {
+object TheCatApiManager {
 
     private val gson: Gson = GsonBuilder().create()
 
@@ -17,5 +17,5 @@ object TheCapApiManager {
             .build()
     }
 
-    operator fun invoke(): TheCapApi = instance.create(TheCapApi::class.java)
+    operator fun invoke(): TheCatApi = instance.create(TheCatApi::class.java)
 }

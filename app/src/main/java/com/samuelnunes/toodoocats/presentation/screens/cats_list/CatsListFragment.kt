@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
-import com.samuelnunes.toodoocats.data.remote.TheCapApiManager
+import com.samuelnunes.toodoocats.data.remote.TheCatApiManager
 import com.samuelnunes.toodoocats.databinding.FragmentFirstBinding
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -41,13 +41,13 @@ class CatsListFragment : Fragment() {
 
     private fun populateBreedList() {
         lifecycleScope.launch {
-            breedListAdapter.submitList(TheCapApiManager().getAllBreeds())
+            breedListAdapter.submitList(TheCatApiManager().getAllBreeds())
         }
     }
 
     private fun populateGifs() {
         lifecycleScope.launch {
-            catGifAdapter.submitList(TheCapApiManager().getRandomGif())
+            catGifAdapter.submitList(TheCatApiManager().getRandomGif())
         }
     }
 

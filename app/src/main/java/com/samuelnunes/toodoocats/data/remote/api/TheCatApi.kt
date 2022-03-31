@@ -1,9 +1,9 @@
 package com.samuelnunes.toodoocats.data.remote.api
 
-import com.samuelnunes.toodoocats.entity.remote.BreedDTO
+import com.samuelnunes.toodoocats.domain.dto.BreedDTO
 import retrofit2.http.GET
 
-interface TheCapApi {
+interface TheCatApi {
 
     @GET("breeds")
     suspend fun getAllBreeds(): List<BreedDTO>

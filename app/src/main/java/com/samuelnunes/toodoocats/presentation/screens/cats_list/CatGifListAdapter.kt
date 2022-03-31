@@ -9,7 +9,7 @@ import coil.ImageLoader
 import coil.decode.ImageDecoderDecoder
 import coil.request.ImageRequest
 import com.samuelnunes.toodoocats.databinding.ItemGifBinding
-import com.samuelnunes.toodoocats.entity.remote.BreedDTO
+import com.samuelnunes.toodoocats.domain.dto.BreedDTO
 
 internal class CatGifListAdapter(private val onImageDTOClick: (BreedDTO.ImageDTO) -> Unit) :
     ListAdapter<BreedDTO.ImageDTO, CatGifListAdapter.ImageDTOViewHolder>(ImageDTOItemCallback) {
