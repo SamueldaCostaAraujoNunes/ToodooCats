@@ -6,7 +6,7 @@ data class Breed(
     val image: Image?,
     val name: String,
     val description: String,
-    val wikipediaUrl: String?
+    val wikipediaName: String?
 ) {
     data class Image(
         val height: Int?,

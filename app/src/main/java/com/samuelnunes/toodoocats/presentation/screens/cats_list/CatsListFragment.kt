@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
 import com.google.android.material.snackbar.Snackbar
 import com.samuelnunes.toodoocats.databinding.FragmentFirstBinding
@@ -19,8 +20,12 @@ class CatsListFragment : Fragment() {
     private val viewModel: CatsListViewModel by viewModels()
 
     private lateinit var binding: FragmentFirstBinding
-    private val breedListAdapter = BreedListAdapter {
-        Timber.i(it.name)
+
+
+    private val breedListAdapter = BreedListAdapter { breed ->
+        val direction =
+            CatsListFragmentDirections.actionFirstFragmentToNavLoginActivity(breed.wikipediaName!!)
+        findNavController().navigate(direction)
     }
     private val catGifAdapter = CatGifListAdapter {
         populateGifs()

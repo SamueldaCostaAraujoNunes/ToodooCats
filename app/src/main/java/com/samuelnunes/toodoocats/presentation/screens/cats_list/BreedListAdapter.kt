@@ -28,12 +28,8 @@ internal class BreedListAdapter(private val onBreedDTOClick: (Breed) -> Unit) :
 
         fun bind(item: Breed) {
             binding.apply {
-                val url = item.image?.url
-                ivCat.visibilityIf(!url.isNullOrEmpty())
-                ivCat.load(url)
-                title.text = item.name
-                description.text = item.description
-                root.setOnClickListener { onBreedDTOClick(item) }
+                breed = item
+                btWikipedia.setOnClickListener { onBreedDTOClick(item) }
             }
         }
     }

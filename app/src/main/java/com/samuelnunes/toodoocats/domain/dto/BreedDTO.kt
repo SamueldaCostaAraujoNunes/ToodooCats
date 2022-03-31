@@ -63,7 +63,9 @@ data class BreedDTO(
     @SerializedName("wikipedia_url")
     val wikipediaUrl: String?
 ) {
-    fun toBreed(): Breed = Breed(id, image?.toImage(), name, description, wikipediaUrl)
+    fun toBreed(): Breed = Breed(id, image?.toImage(), name, description, sanitizeWikepedia())
+
+    private fun sanitizeWikepedia() = wikipediaUrl?.split("wiki/")?.get(1)
 
     data class ImageDTO(
         val height: Int?,

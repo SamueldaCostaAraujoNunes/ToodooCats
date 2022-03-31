@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.decode.ImageDecoderDecoder
+import coil.load
 import coil.request.ImageRequest
 import com.samuelnunes.toodoocats.databinding.ItemGifBinding
 import com.samuelnunes.toodoocats.domain.dto.BreedDTO
@@ -29,19 +30,7 @@ internal class CatGifListAdapter(private val onImageDTOClick: (Breed.Image) -> U
 
         fun bind(item: Breed.Image) {
             binding.apply {
-                val context = binding.root.context
-                val imageLoader = ImageLoader.Builder(context)
-                    .components {
-                        add(ImageDecoderDecoder.Factory())
-                    }.build()
-
-                val request = ImageRequest.Builder(context)
-                    .data(item.url)
-                    .crossfade(true)
-                    .target(ivCat)
-                    .build()
-
-                imageLoader.enqueue(request)
+                catUrl = item.url
                 root.setOnClickListener { onImageDTOClick(item) }
             }
         }

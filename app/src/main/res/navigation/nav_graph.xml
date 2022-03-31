@@ -8,8 +8,21 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.samuelnunes.toodoocats.presentation.screens.cats_list.CatsListFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_first">
+        <action
+            android:id="@+id/action_FirstFragment_to_nav_login_activity"
+            app:destination="@id/nav_login_activity" />
     </fragment>
+
+    <activity
+        android:id="@+id/nav_login_activity"
+        app:action="android.intent.action.VIEW"
+        app:dataPattern="https://en.wikipedia.org/wiki/{cat}">
+        <argument
+            android:name="cat"
+            app:argType="string"
+            app:nullable="false"/>
+    </activity>
 
 </navigation>
