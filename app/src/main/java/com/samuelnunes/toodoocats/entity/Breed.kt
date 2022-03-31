@@ -1,4 +1,17 @@
 package com.samuelnunes.toodoocats.entity
 
-class Breed {
+
+data class Breed(
+    val id: String,
+    val image: Image?,
+    val name: String,
+    val description: String,
+    val wikipediaUrl: String?
+) {
+    data class Image(
+        val height: Int?,
+        val id: String?,
+        val url: String?,
+        val width: Int?
+    )
 }

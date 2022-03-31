@@ -18,7 +18,7 @@ open class BaseRepository {
                 if (res.isSuccessful) {
                     Resource.Success(res.body()!!)
                 } else {
-                    Resource.Error(res.message(), res.body())
+                    Resource.Error(res.message())
                 }
             } catch (throwable: Throwable) {
                 onFetchFailed(throwable)

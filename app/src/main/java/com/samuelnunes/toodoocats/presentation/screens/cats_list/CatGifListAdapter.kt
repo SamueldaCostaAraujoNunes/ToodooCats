@@ -10,23 +10,24 @@ import coil.decode.ImageDecoderDecoder
 import coil.request.ImageRequest
 import com.samuelnunes.toodoocats.databinding.ItemGifBinding
 import com.samuelnunes.toodoocats.domain.dto.BreedDTO
+import com.samuelnunes.toodoocats.entity.Breed
 
-internal class CatGifListAdapter(private val onImageDTOClick: (BreedDTO.ImageDTO) -> Unit) :
-    ListAdapter<BreedDTO.ImageDTO, CatGifListAdapter.ImageDTOViewHolder>(ImageDTOItemCallback) {
+internal class CatGifListAdapter(private val onImageDTOClick: (Breed.Image) -> Unit) :
+    ListAdapter<Breed.Image, CatGifListAdapter.ImageViewHolder>(ImageItemCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageDTOViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ItemGifBinding.inflate(layoutInflater, parent, false)
-        return ImageDTOViewHolder(binding)
+        return ImageViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ImageDTOViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: ImageViewHolder, position: Int) =
         holder.bind(getItem(position))
 
-    inner class ImageDTOViewHolder(private val binding: ItemGifBinding) :
+    inner class ImageViewHolder(private val binding: ItemGifBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: BreedDTO.ImageDTO) {
+        fun bind(item: Breed.Image) {
             binding.apply {
                 val context = binding.root.context
                 val imageLoader = ImageLoader.Builder(context)
@@ -46,11 +47,11 @@ internal class CatGifListAdapter(private val onImageDTOClick: (BreedDTO.ImageDTO
         }
     }
 
-    internal object ImageDTOItemCallback : DiffUtil.ItemCallback<BreedDTO.ImageDTO>() {
-        override fun areItemsTheSame(first: BreedDTO.ImageDTO, second: BreedDTO.ImageDTO): Boolean =
+    internal object ImageItemCallback : DiffUtil.ItemCallback<Breed.Image>() {
+        override fun areItemsTheSame(first: Breed.Image, second: Breed.Image): Boolean =
             first.id == second.id
 
-        override fun areContentsTheSame(first: BreedDTO.ImageDTO, second: BreedDTO.ImageDTO): Boolean =
+        override fun areContentsTheSame(first: Breed.Image, second: Breed.Image): Boolean =
             first == second
 
     }

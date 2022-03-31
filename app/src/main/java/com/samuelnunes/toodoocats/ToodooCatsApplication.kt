@@ -1,10 +1,10 @@
 package com.samuelnunes.toodoocats
 
 import android.app.Application
-import androidx.viewbinding.BuildConfig
-import com.google.android.material.color.DynamicColors
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
+@HiltAndroidApp
 class ToodooCatsApplication: Application() {
     override fun onCreate() {
         super.onCreate()

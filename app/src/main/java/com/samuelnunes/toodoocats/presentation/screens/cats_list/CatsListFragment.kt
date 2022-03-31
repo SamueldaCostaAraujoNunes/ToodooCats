@@ -1,18 +1,22 @@
 package com.samuelnunes.toodoocats.presentation.screens.cats_list
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import com.samuelnunes.toodoocats.data.remote.TheCatApiManager
+import com.google.android.material.snackbar.Snackbar
 import com.samuelnunes.toodoocats.databinding.FragmentFirstBinding
-import kotlinx.coroutines.launch
+import com.samuelnunes.toodoocats.domain.utils.Resource
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class CatsListFragment : Fragment() {
+
+    private val viewModel: CatsListViewModel by viewModels()
 
     private lateinit var binding: FragmentFirstBinding
     private val breedListAdapter = BreedListAdapter {
@@ -40,15 +44,45 @@ class CatsListFragment : Fragment() {
     }
 
     private fun populateBreedList() {
-        lifecycleScope.launch {
-            breedListAdapter.submitList(TheCatApiManager().getAllBreeds())
+        viewModel.getAllBreeds().observe(viewLifecycleOwner) { res ->
+            when(res) {
+                is Resource.Loading -> showLoading()
+                is Resource.Success -> {
+                    hideLoading()
+                    breedListAdapter.submitList(res.data)
+                }
+                is Resource.Error -> {
+                    hideLoading()
+                    res.data.let { breedListAdapter.submitList(it) }
+                    Snackbar.make(binding.root, res.message, Snackbar.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
     private fun populateGifs() {
-        lifecycleScope.launch {
-            catGifAdapter.submitList(TheCatApiManager().getRandomGif())
+        viewModel.getCatsGifs().observe(viewLifecycleOwner) { res ->
+            when(res) {
+                is Resource.Loading -> showLoading()
+                is Resource.Success -> {
+                    hideLoading()
+                    catGifAdapter.submitList(res.data)
+                }
+                is Resource.Error -> {
+                    hideLoading()
+                    res.data.let { catGifAdapter.submitList(it) }
+                    Snackbar.make(binding.root, res.message, Snackbar.LENGTH_SHORT).show()
+                }
+            }
         }
+    }
+
+    private fun showLoading() {
+        Timber.d("Show Loading")
+    }
+
+    private fun hideLoading() {
+        Timber.d("Hide Loading")
     }
 
 }

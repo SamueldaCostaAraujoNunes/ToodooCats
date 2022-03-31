@@ -8,24 +8,25 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.samuelnunes.toodoocats.databinding.ItemCatBinding
 import com.samuelnunes.toodoocats.domain.dto.BreedDTO
+import com.samuelnunes.toodoocats.entity.Breed
 import com.samuelnunes.toodoocats.presentation.extensions.visibilityIf
 
-internal class BreedListAdapter(private val onBreedDTOClick: (BreedDTO) -> Unit) :
-    ListAdapter<BreedDTO, BreedListAdapter.BreedDTOViewHolder>(BreedDTOItemCallback) {
+internal class BreedListAdapter(private val onBreedDTOClick: (Breed) -> Unit) :
+    ListAdapter<Breed, BreedListAdapter.BreedViewHolder>(BreedItemCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BreedDTOViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BreedViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ItemCatBinding.inflate(layoutInflater, parent, false)
-        return BreedDTOViewHolder(binding)
+        return BreedViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: BreedDTOViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: BreedViewHolder, position: Int) =
         holder.bind(getItem(position))
 
-    inner class BreedDTOViewHolder(private val binding: ItemCatBinding) :
+    inner class BreedViewHolder(private val binding: ItemCatBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: BreedDTO) {
+        fun bind(item: Breed) {
             binding.apply {
                 val url = item.image?.url
                 ivCat.visibilityIf(!url.isNullOrEmpty())
@@ -37,11 +38,11 @@ internal class BreedListAdapter(private val onBreedDTOClick: (BreedDTO) -> Unit)
         }
     }
 
-    internal object BreedDTOItemCallback : DiffUtil.ItemCallback<BreedDTO>() {
-        override fun areItemsTheSame(first: BreedDTO, second: BreedDTO): Boolean =
+    internal object BreedItemCallback : DiffUtil.ItemCallback<Breed>() {
+        override fun areItemsTheSame(first: Breed, second: Breed): Boolean =
             first.id == second.id
 
-        override fun areContentsTheSame(first: BreedDTO, second: BreedDTO): Boolean =
+        override fun areContentsTheSame(first: Breed, second: Breed): Boolean =
             first == second
 
     }

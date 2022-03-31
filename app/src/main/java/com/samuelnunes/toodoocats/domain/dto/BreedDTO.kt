@@ -2,6 +2,7 @@ package com.samuelnunes.toodoocats.domain.dto
 
 
 import com.google.gson.annotations.SerializedName
+import com.samuelnunes.toodoocats.entity.Breed
 
 data class BreedDTO(
     val adaptability: Int,
@@ -60,14 +61,18 @@ data class BreedDTO(
     val vocalisation: Int,
     val weight: WeightDTO,
     @SerializedName("wikipedia_url")
-    val wikipediaUrl: String
+    val wikipediaUrl: String?
 ) {
+    fun toBreed(): Breed = Breed(id, image?.toImage(), name, description, wikipediaUrl)
+
     data class ImageDTO(
         val height: Int?,
         val id: String?,
         val url: String?,
         val width: Int?
-    )
+    ) {
+        fun toImage() = Breed.Image(height, id, url, width)
+    }
 
     data class WeightDTO(
         val imperial: String,

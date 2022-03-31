@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -39,9 +40,15 @@ android {
 }
 
 dependencies {
+    // Hilt
+    def hilt_dagger_version = "2.41"
+    implementation "com.google.dagger:hilt-android:$hilt_dagger_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_dagger_version"
+
     // Coil
-    implementation("io.coil-kt:coil:2.0.0-rc02")
-    implementation("io.coil-kt:coil-gif:2.0.0-rc02")
+    def coil_version = "2.0.0-rc02"
+    implementation "io.coil-kt:coil:$coil_version"
+    implementation "io.coil-kt:coil-gif:$coil_version"
 
     //Room
     def room_version = "2.4.2"
@@ -58,9 +65,13 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
     // Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
+    def retrofit_version = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    //OkHttp
+    def ok_http_version = "5.0.0-alpha.2"
+    implementation "com.squareup.okhttp3:okhttp:$ok_http_version"
 
     // Navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.0-alpha03'
