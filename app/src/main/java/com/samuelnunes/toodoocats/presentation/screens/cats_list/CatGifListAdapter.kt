@@ -5,15 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.ImageLoader
-import coil.decode.ImageDecoderDecoder
-import coil.load
-import coil.request.ImageRequest
 import com.samuelnunes.toodoocats.databinding.ItemGifBinding
-import com.samuelnunes.toodoocats.domain.dto.BreedDTO
 import com.samuelnunes.toodoocats.entity.Breed
 
-internal class CatGifListAdapter(private val onImageDTOClick: (Breed.Image) -> Unit) :
+internal class CatGifListAdapter(private val onImageClick: (Breed.Image) -> Unit) :
     ListAdapter<Breed.Image, CatGifListAdapter.ImageViewHolder>(ImageItemCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
@@ -31,7 +26,7 @@ internal class CatGifListAdapter(private val onImageDTOClick: (Breed.Image) -> U
         fun bind(item: Breed.Image) {
             binding.apply {
                 catUrl = item.url
-                root.setOnClickListener { onImageDTOClick(item) }
+                root.setOnClickListener { onImageClick(item) }
             }
         }
     }

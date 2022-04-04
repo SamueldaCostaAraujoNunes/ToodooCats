@@ -6,7 +6,6 @@ import retrofit2.Response
 
 open class BaseRepository {
 
-
     inline fun <RemoteType> networkBoundResource(
         crossinline fetch: suspend () -> Response<RemoteType>,
         crossinline onFetchFailed: (Throwable) -> Unit = { }
@@ -35,20 +34,18 @@ open class BaseRepository {
         crossinline shouldFetch: (LocalType?) -> Boolean = { true }
     ) = flow {
         emit(Resource.Loading<RemoteType>())
-        val data = query().firstOrNull()
+        val resultFlow = query()
 
-        val flow = if (shouldFetch(data)) {
-            emit(Resource.Loading<RemoteType>())
-
+        val flow = if (shouldFetch(resultFlow.firstOrNull())) {
             try {
                 saveFetchResult(fetch())
-                query().map { Resource.Success(it) }
+                resultFlow.map { Resource.Success(it) }
             } catch (throwable: Throwable) {
                 onFetchFailed(throwable)
-                query().map { Resource.Error(throwable, it) }
+                resultFlow.map { Resource.Error(throwable, it) }
             }
         } else {
-            query().map { Resource.Success(it) }
+            resultFlow.map { Resource.Success(it) }
         }
         emitAll(flow)
     }

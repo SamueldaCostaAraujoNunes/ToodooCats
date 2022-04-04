@@ -1,6 +1,5 @@
 package com.samuelnunes.toodoocats.domain.use_case
 
-import com.samuelnunes.toodoocats.domain.dto.BreedDTO
 import com.samuelnunes.toodoocats.domain.repository.ICatsRepository
 import com.samuelnunes.toodoocats.domain.utils.Resource
 import com.samuelnunes.toodoocats.entity.Breed

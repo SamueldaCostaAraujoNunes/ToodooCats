@@ -2,6 +2,7 @@ package com.samuelnunes.toodoocats.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.samuelnunes.toodoocats.data.remote.Constants.CATS_API_BASE_URL
 import com.samuelnunes.toodoocats.data.remote.api.TheCatApi
 import com.samuelnunes.toodoocats.data.repository.CatsRepository
 import com.samuelnunes.toodoocats.domain.repository.ICatsRepository
@@ -11,6 +12,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -24,7 +26,7 @@ object NetworkModule {
     @Singleton
     @Provides
     fun providerTheCatApiRetrofit(gson: Gson): Retrofit = Retrofit.Builder()
-            .baseUrl("https://api.thecatapi.com/v1/")
+            .baseUrl(CATS_API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 

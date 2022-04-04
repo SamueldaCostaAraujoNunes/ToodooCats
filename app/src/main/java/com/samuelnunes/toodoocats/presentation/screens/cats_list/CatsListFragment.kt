@@ -21,24 +21,23 @@ class CatsListFragment : Fragment() {
 
     private lateinit var binding: FragmentFirstBinding
 
-
     private val breedListAdapter = BreedListAdapter { breed ->
-        val direction =
-            CatsListFragmentDirections.actionFirstFragmentToNavLoginActivity(breed.wikipediaName!!)
+        val direction = CatsListFragmentDirections
+            .actionFirstFragmentToNavLoginActivity(breed.wikipediaName!!)
         findNavController().navigate(direction)
     }
     private val catGifAdapter = CatGifListAdapter {
         populateGifs()
     }
-    private val adapter = ConcatAdapter(catGifAdapter, breedListAdapter)
 
+    private val concatAdapter = ConcatAdapter(catGifAdapter, breedListAdapter)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFirstBinding.inflate(inflater, container, false)
-        binding.root.adapter = adapter
+        binding.root.adapter = concatAdapter
         return binding.root
     }
 

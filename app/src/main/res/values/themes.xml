@@ -1,5 +1,5 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<resources>
+
     <style name="Theme.ToodooCats" parent="Theme.Material3.DynamicColors.DayNight"/>
 
     <style name="Theme.ToodooCats.NoActionBar">
