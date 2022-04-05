@@ -5,13 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.samuelnunes.toodoocats.databinding.ItemCatBinding
-import com.samuelnunes.toodoocats.domain.dto.BreedDTO
-import com.samuelnunes.toodoocats.entity.Breed
-import com.samuelnunes.toodoocats.presentation.extensions.visibilityIf
+import com.samuelnunes.toodoocats.domain.entity.Breed
 
-internal class BreedListAdapter(private val onBreedDTOClick: (Breed) -> Unit) :
+internal class BreedListAdapter(private val onBreedClick: (Breed) -> Unit) :
     ListAdapter<Breed, BreedListAdapter.BreedViewHolder>(BreedItemCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BreedViewHolder {
@@ -29,7 +26,7 @@ internal class BreedListAdapter(private val onBreedDTOClick: (Breed) -> Unit) :
         fun bind(item: Breed) {
             binding.apply {
                 breed = item
-                btWikipedia.setOnClickListener { onBreedDTOClick(item) }
+                btWikipedia.setOnClickListener { onBreedClick(item) }
             }
         }
     }
@@ -40,7 +37,6 @@ internal class BreedListAdapter(private val onBreedDTOClick: (Breed) -> Unit) :
 
         override fun areContentsTheSame(first: Breed, second: Breed): Boolean =
             first == second
-
     }
 
 }

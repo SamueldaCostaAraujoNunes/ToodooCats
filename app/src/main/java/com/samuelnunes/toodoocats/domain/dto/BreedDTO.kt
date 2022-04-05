@@ -2,7 +2,7 @@ package com.samuelnunes.toodoocats.domain.dto
 
 
 import com.google.gson.annotations.SerializedName
-import com.samuelnunes.toodoocats.entity.Breed
+import com.samuelnunes.toodoocats.domain.entity.Breed
 
 data class BreedDTO(
     val adaptability: Int,

@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/BreedFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/BreedFragment"
         android:name="com.samuelnunes.toodoocats.presentation.screens.cats_list.CatsListFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_first">
         <action
-            android:id="@+id/action_FirstFragment_to_nav_login_activity"
-            app:destination="@id/nav_login_activity" />
+            android:id="@+id/action_BreedFragment_to_wikipedia_page"
+            app:destination="@id/wikipedia_page" />
     </fragment>
 
     <activity
-        android:id="@+id/nav_login_activity"
+        android:id="@+id/wikipedia_page"
         app:action="android.intent.action.VIEW"
         app:dataPattern="https://en.wikipedia.org/wiki/{cat}">
         <argument

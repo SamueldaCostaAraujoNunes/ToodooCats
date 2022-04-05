@@ -6,7 +6,7 @@ import androidx.lifecycle.asLiveData
 import com.samuelnunes.toodoocats.domain.use_case.GetAllBreedsUseCase
 import com.samuelnunes.toodoocats.domain.use_case.GetCatsGifsUseCase
 import com.samuelnunes.toodoocats.domain.utils.Resource
-import com.samuelnunes.toodoocats.entity.Breed
+import com.samuelnunes.toodoocats.domain.entity.Breed
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

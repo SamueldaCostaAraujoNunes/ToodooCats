@@ -1,4 +1,4 @@
-package com.samuelnunes.toodoocats.entity
+package com.samuelnunes.toodoocats.domain.entity
 
 
 data class Breed(

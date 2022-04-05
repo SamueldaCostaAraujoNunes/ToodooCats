@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.samuelnunes.toodoocats.databinding.ItemGifBinding
-import com.samuelnunes.toodoocats.entity.Breed
+import com.samuelnunes.toodoocats.domain.entity.Breed
 
 internal class CatGifListAdapter(private val onImageClick: (Breed.Image) -> Unit) :
     ListAdapter<Breed.Image, CatGifListAdapter.ImageViewHolder>(ImageItemCallback) {

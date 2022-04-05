@@ -23,7 +23,7 @@ class CatsListFragment : Fragment() {
 
     private val breedListAdapter = BreedListAdapter { breed ->
         val direction = CatsListFragmentDirections
-            .actionFirstFragmentToNavLoginActivity(breed.wikipediaName!!)
+            .actionBreedFragmentToWikipediaPage(breed.wikipediaName!!)
         findNavController().navigate(direction)
     }
     private val catGifAdapter = CatGifListAdapter {

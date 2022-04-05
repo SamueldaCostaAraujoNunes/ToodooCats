@@ -4,7 +4,7 @@ import com.samuelnunes.toodoocats.domain.utils.Resource
 import kotlinx.coroutines.flow.*
 import retrofit2.Response
 
-open class BaseRepository {
+open class  BaseRepository {
 
     inline fun <RemoteType> networkBoundResource(
         crossinline fetch: suspend () -> Response<RemoteType>,

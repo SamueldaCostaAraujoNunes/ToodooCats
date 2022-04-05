@@ -5,4 +5,4 @@ import androidx.databinding.BindingAdapter
 import coil.load
 
 @BindingAdapter("imageUrl")
-fun ImageView.url(url: String?) = load(url)
+fun imageUrl(iv: ImageView, url: String?) = iv.load(url)
